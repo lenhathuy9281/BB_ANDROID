@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageItemPostUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/avatar_default" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvPostItemName"
+                    android:text="Huy Lê"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tvPostItemUser"
+                    android:layout_marginStart="3dp"
+                    android:text=" @huyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tvPostItemHour"
+                    android:layout_marginStart="3dp"
+                    android:text="3h"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvItemNotificationContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🔥 Are you using WordPress and migrating to the JAMstack? I wrote up a case study about how Smashing Magazine moved to JAMstack and saw great performance improvements and better security.
+
+smashingdrusteer.com/2020/01/migrat..." />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvItemPostComment"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:drawablePadding="5dp"
+                    android:text="5"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/icon_comment"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvItemPostShare"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:drawablePadding="5dp"
+                    android:text="5"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/icon__share"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvItemPostLike"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:drawablePadding="5dp"
+                    android:text="5"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/icon_like"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

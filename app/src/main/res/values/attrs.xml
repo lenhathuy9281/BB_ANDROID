@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomTextView">
+        <attr name="colorHeader" format="color" />
+        <attr name="fontHeader" format="reference" />
+        <attr name="topIcon" format="reference" />
+        <attr name="bottomIcon" format="reference" />
+        <attr name="leftIcon" format="reference" />
+        <attr name="rightIcon" format="reference" />
+
+
+    </declare-styleable>
+
+    <declare-styleable name="CustomEditText">
+        <attr name="colorTextEdit" format="color" />
+        <attr name="fontTextEdit" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomButton">
+        <attr name="buttonColor" format="color" />
+        <attr name="buttonFont" format="reference" />
+        <attr name="topIconButton" format="reference" />
+        <attr name="bottomIconButton" format="reference" />
+        <attr name="leftIconButton" format="reference" />
+        <attr name="rightIconButton" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomViewGroup">
+        <attr name="image" format="reference" />
+        <attr name="text" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomLayoutAccount">
+        <attr name="accountNumber" format="string" />
+        <attr name="balanceNumber" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomLayoutSupplier">
+        <attr name="titleName" format="string" />
+        <attr name="supplyName" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomLoadingBar">
+
+    </declare-styleable>
+</resources>
