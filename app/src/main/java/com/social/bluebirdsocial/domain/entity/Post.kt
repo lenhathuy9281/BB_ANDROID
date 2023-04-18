@@ -1,6 +1,5 @@
 package com.social.bluebirdsocial.domain.entity
 
-class Post(
-
-) {
-}
+data class Post(
+    val content: String
+)

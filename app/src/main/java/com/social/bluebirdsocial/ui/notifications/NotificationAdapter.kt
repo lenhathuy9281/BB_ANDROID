@@ -8,6 +8,7 @@ import com.social.bluebirdsocial.ui.BaseAdapter
 import com.social.bluebirdsocial.ui.BaseRcvVH
 
 class NotificationAdapter: BaseAdapter() {
+    var onClickNotification: (() -> Unit)? = null
 
     inner class NotificationViewHolder(itemView: View): BaseRcvVH<ItemNotification>(itemView){
         private val binding: ItemNotificationBinding by lazy {
@@ -18,6 +19,10 @@ class NotificationAdapter: BaseAdapter() {
             with(binding){
 
                 tvItemNotificationContent.text = data.content
+
+                root.setOnClickListener {
+                    onClickNotification?.invoke()
+                }
             }
         }
 

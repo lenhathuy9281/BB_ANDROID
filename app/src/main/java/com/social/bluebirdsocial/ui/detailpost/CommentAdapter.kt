@@ -18,7 +18,8 @@ class CommentAdapter: BaseAdapter() {
 
         override fun onBind(data: ItemComment) {
             with(binding){
-
+                tvDetailUserComment.text = data.content
+                tvHourUserComment.text = data.time
 
             }
         }

@@ -8,6 +8,8 @@ import com.social.bluebirdsocial.ui.BaseAdapter
 import com.social.bluebirdsocial.ui.BaseRcvVH
 
 class PostAdapter: BaseAdapter() {
+    var onClickComment: (() -> Unit)? = null
+
     override fun getLayoutResource(viewType: Int): Int = R.layout.item_post
 
     override fun onCreateVH(itemView: View, viewType: Int): BaseRcvVH<Post> {
@@ -21,7 +23,18 @@ class PostAdapter: BaseAdapter() {
 
         override fun onBind(data: Post) {
             with(binding){
+                tvItemNotificationContent.text = data.content
 
+
+                tvItemPostComment.setOnClickListener {
+                    onClickComment?.invoke()
+                }
+                tvItemPostLike.setOnClickListener {
+
+                }
+                tvItemPostShare.setOnClickListener {
+
+                }
             }
         }
 
