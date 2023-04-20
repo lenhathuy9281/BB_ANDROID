@@ -8,7 +8,7 @@ import com.social.bluebirdsocial.ui.BaseAdapter
 import com.social.bluebirdsocial.ui.BaseRcvVH
 
 class PostAdapter: BaseAdapter() {
-    var onClickComment: (() -> Unit)? = null
+    var onClickComment: ((String) -> Unit)? = null
 
     override fun getLayoutResource(viewType: Int): Int = R.layout.item_post
 
@@ -27,7 +27,7 @@ class PostAdapter: BaseAdapter() {
 
 
                 tvItemPostComment.setOnClickListener {
-                    onClickComment?.invoke()
+                    data.id?.let { it1 -> onClickComment?.invoke(it1) }
                 }
                 tvItemPostLike.setOnClickListener {
 

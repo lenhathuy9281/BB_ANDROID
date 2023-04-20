@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import com.social.bluebirdsocial.databinding.FragmentPostDetailBinding
 import com.social.bluebirdsocial.domain.entity.ItemComment
+import com.social.bluebirdsocial.domain.entity.Post
 import com.social.bluebirdsocial.ui.post.User
 import java.util.Calendar
 
@@ -48,6 +49,7 @@ class DetailPostFragment : Fragment() {
         }
         val id = arguments?.getString("id_post")
         Log.d("check_id", "$id")
+        id?.let { getPost(it) }
         initRcv()
         readData()
         with(binding) {
@@ -96,6 +98,25 @@ class DetailPostFragment : Fragment() {
             override fun onCancelled(databaseError: DatabaseError) {
                 println("The read failed: " + databaseError.code)
             }
+        })
+    }
+
+    fun getPost(id: String){
+        databaseRef = database.getReference("posts")
+        val detailPostRef = databaseRef.child(id)
+        detailPostRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val post = snapshot.getValue(Post::class.java)
+                with(binding) {
+                    tvDetailNotificationContent.text = post?.body ?: ""
+                    tvPostDetailHour.text = post?.timestamp.toString() ?: "error"
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
         })
     }
 }

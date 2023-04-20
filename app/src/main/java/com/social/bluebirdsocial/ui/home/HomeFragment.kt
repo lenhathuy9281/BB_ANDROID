@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
         adapter = PostAdapter().apply {
             addItems(postList)
             onClickComment = {
-                onClickNavigation("smt")
+                onClickNavigation(it)
             }
         }
         database = FirebaseDatabase.getInstance()
