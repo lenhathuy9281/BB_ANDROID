@@ -1,22 +1,28 @@
 package com.social.bluebirdsocial.ui.post
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.social.bluebirdsocial.R
 import com.social.bluebirdsocial.databinding.FragmentPostBinding
+import com.social.bluebirdsocial.domain.entity.Post
+import java.util.Calendar
 
 class PostFragment : Fragment() {
 
     private var _binding: FragmentPostBinding? = null
 
+    private lateinit var database: FirebaseDatabase
+    private lateinit var databaseRef: DatabaseReference
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -29,8 +35,7 @@ class PostFragment : Fragment() {
 
         _binding = FragmentPostBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-
+        database = FirebaseDatabase.getInstance()
         return root
     }
 
@@ -38,25 +43,7 @@ class PostFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding){
-            tvPostStatus.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                    TODO("Not yet implemented")
-                }
 
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    postHeader.btnPostBarRight.isEnabled = !s.isNullOrBlank()
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-                    TODO("Not yet implemented")
-                }
-
-            })
         }
 
         onClickBinding()
@@ -69,9 +56,7 @@ class PostFragment : Fragment() {
             }
 
             postHeader.btnPostBarRight.setOnClickListener {
-
-
-                goBack()
+                addPost(Post("huyle","Hom nay troi dep that day",Calendar.getInstance().timeInMillis))
             }
         }
     }
@@ -83,5 +68,16 @@ class PostFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+
+    private fun addPost(post: Post){
+        databaseRef = database.getReference("posts")
+        post.id?.let { databaseRef.child(it).setValue(post).addOnSuccessListener {
+            Log.d("check_post","done")
+            goBack()
+        }.addOnFailureListener { e ->
+            e.printStackTrace()
+        } }
     }
 }

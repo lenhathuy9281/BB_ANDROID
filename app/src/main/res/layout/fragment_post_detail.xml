@@ -87,9 +87,26 @@ smashingdrusteer.com/2020/01/migrat..." />
             android:layout_marginTop="5dp"
             android:background="@android:color/darker_gray"
             />
-        <EditText
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edtCommentNew"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btnPostComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:text="Comment"/>
+        </LinearLayout>
+
 
 
         <androidx.recyclerview.widget.RecyclerView

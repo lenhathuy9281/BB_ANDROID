@@ -23,7 +23,7 @@ class PostAdapter: BaseAdapter() {
 
         override fun onBind(data: Post) {
             with(binding){
-                tvItemNotificationContent.text = data.content
+                tvItemNotificationContent.text = data.body
 
 
                 tvItemPostComment.setOnClickListener {

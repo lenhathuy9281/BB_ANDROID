@@ -18,7 +18,7 @@ class NotificationAdapter: BaseAdapter() {
         override fun onBind(data: ItemNotification) {
             with(binding){
 
-                tvItemNotificationContent.text = data.content
+                tvItemNotificationContent.text = data.body
 
                 root.setOnClickListener {
                     onClickNotification?.invoke()

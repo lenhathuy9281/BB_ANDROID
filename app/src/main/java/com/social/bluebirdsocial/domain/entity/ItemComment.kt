@@ -1,7 +1,8 @@
 package com.social.bluebirdsocial.domain.entity
 
 data class ItemComment(
-    val time: String? = "",
-    val content: String? = ""
+    val body: String? = "",
+    val timestamp: Long? = 0,
+    val user_id: String? = ""
 ) {
 }

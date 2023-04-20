@@ -45,5 +45,9 @@
         android:id="@+id/navigation_comment"
         android:name="com.social.bluebirdsocial.ui.detailpost.DetailPostFragment"
         android:label="detail post"
-        tools:layout="@layout/fragment_post_detail"/>
+        tools:layout="@layout/fragment_post_detail">
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
 </navigation>

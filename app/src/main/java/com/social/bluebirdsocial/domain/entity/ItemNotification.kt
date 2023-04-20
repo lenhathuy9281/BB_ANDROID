@@ -1,7 +1,7 @@
 package com.social.bluebirdsocial.domain.entity
 
 data class ItemNotification(
-    val avatar: String? = "",
-    val content: String? = ""
+    val body: String? = "",
+    val timestamp: Long? = 0
 ) {
 }

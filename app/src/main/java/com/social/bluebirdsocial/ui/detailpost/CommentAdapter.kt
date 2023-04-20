@@ -5,7 +5,6 @@ import com.social.bluebirdsocial.R
 import com.social.bluebirdsocial.databinding.ItemCommentBinding
 import com.social.bluebirdsocial.databinding.ItemNotificationBinding
 import com.social.bluebirdsocial.domain.entity.ItemComment
-import com.social.bluebirdsocial.domain.entity.ItemNotification
 import com.social.bluebirdsocial.ui.BaseAdapter
 import com.social.bluebirdsocial.ui.BaseRcvVH
 
@@ -18,8 +17,8 @@ class CommentAdapter: BaseAdapter() {
 
         override fun onBind(data: ItemComment) {
             with(binding){
-                tvDetailUserComment.text = data.content
-                tvHourUserComment.text = data.time
+                tvDetailUserComment.text = data.body
+                tvHourUserComment.text = data.timestamp.toString()
 
             }
         }
