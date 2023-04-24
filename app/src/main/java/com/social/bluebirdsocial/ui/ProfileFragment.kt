@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -19,11 +20,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.social.bluebirdsocial.R
-import com.social.bluebirdsocial.databinding.FragmentPostBinding
 import com.social.bluebirdsocial.databinding.FragmentProfileBinding
 import com.social.bluebirdsocial.domain.entity.User
 import com.social.bluebirdsocial.ui.custom.decodeImage
 import com.social.bluebirdsocial.ui.custom.encodeImage
+
 
 class ProfileFragment: Fragment() {
     private var _binding: FragmentProfileBinding? = null
@@ -73,6 +74,8 @@ class ProfileFragment: Fragment() {
         with(binding) {
             edtNameUser.setText(mainUser.name)
             edtEmailUser.setText(mainUser.email)
+            edtDobUser.setText(mainUser.dob)
+            mainUser.age?.let { edtAgeUser.setText(it.toString()) }
             context?.let { Glide.with(it).load(mainUser.avatar?.decodeImage()).error(R.drawable.img_avatar).into(imageAvatarUser) }
 
             icChooseAvatar.setOnClickListener {
@@ -80,8 +83,22 @@ class ProfileFragment: Fragment() {
             }
 
             icConfirmChange.setOnClickListener {
+                mainUser.age = edtAgeUser.text.toString().toInt()
                 mainUser.name = edtNameUser.text.toString()
+                mainUser.email = edtEmailUser.text.toString()
+                mainUser.dob = edtDobUser.text.toString()
+                mainUser.description = edtDesciptionUser.text.toString()
+                mainUser.gender = if (radioBtnMale.isChecked) 0 else 1
+                mainUser.id = id
+                mainUser.idUser = id
                 id?.let { it1 -> updateUser(it1, mainUser) }
+            }
+
+            binding.btnLogout.setOnClickListener {
+                FirebaseAuth.getInstance().signOut()
+                Toast.makeText(context, "Đã đăng xuất!", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(context, LoginActivity::class.java))
+                activity?.finish()
             }
         }
     }
