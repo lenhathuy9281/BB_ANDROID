@@ -41,6 +41,7 @@
             android:hint="Bạn đang nghĩ gì vậy?" />
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageUpload"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"

@@ -3,6 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_post">Post</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -12,4 +13,15 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <string name="text_title_change_profile">Sửa thông tin tài khoản</string>
+    <string name="text_name_change_profile">Họ và tên<font color='red'>*</font></string>
+    <string name="text_phone_change_profile">Số điện thoại</string>
+    <string name="text_email_change_profile">Email</string>
+    <string name="text_address_change_profile">Địa chỉ</string>
+    <string name="text_birth_change_profile">Ngày sinh</string>
+    <string name="text_sex_change_profile">Giới tính</string>
+    <string name="text_hint_search_product">Tìm tên sản phẩm</string>
+    <string name="text_hint_search_table">Tìm tên bàn</string>
+    <string name="text_hint_search_oder">Tên đơn, ngày tháng, giờ</string>
 </resources>

@@ -1,20 +1,23 @@
 package com.social.bluebirdsocial.ui.home
 
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
+import com.google.gson.Gson
 import com.social.bluebirdsocial.R
 import com.social.bluebirdsocial.databinding.FragmentHomeBinding
-import com.social.bluebirdsocial.domain.entity.Account
+import com.social.bluebirdsocial.domain.entity.User
 import com.social.bluebirdsocial.domain.entity.Post
-import com.social.bluebirdsocial.ui.post.User
 
 class HomeFragment : Fragment() {
 
@@ -28,7 +31,9 @@ class HomeFragment : Fragment() {
 
 
     lateinit var postList: ArrayList<Post>
+    lateinit var userList: ArrayList<User>
     lateinit var adapter: PostAdapter
+    private var storage: SharedPreferences? = null
 //    private val homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
     override fun onCreateView(
@@ -38,27 +43,43 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
+
+        storage = context?.getSharedPreferences("STORAGE", MODE_PRIVATE)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         postList = ArrayList()
+        userList = ArrayList()
         adapter = PostAdapter().apply {
             addItems(postList)
             onClickComment = {
                 onClickNavigation(it)
             }
+
+            onClickLike = { id, like ->
+                updateLike(id, like)
+            }
+            listUser = userList
         }
         database = FirebaseDatabase.getInstance()
         databaseRef = database.reference
         initView()
-//        getUser()
+        getUser()
         readData()
+
 //        homeViewModel.text.observe(viewLifecycleOwner) {
 //
 //        }
 
+    }
+
+    private fun updateLike(id: String, like: Int) {
+        val postRef = database.getReference("posts")
+        postRef.child(id).child("likes").setValue(like+1).addOnSuccessListener {
+            Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun initView(){
@@ -86,13 +107,20 @@ class HomeFragment : Fragment() {
 
     fun getUser() {
 
-        databaseRef = database.getReference("account")
+        databaseRef = database.getReference("users")
         databaseRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (userSnapshot in dataSnapshot.children) {
-                    val user = userSnapshot.getValue(Account::class.java)
+                    val user = userSnapshot.getValue(User::class.java)
                     Log.d("check_account","---${user}")
+                    if (user != null) {
+                        userList.add(user)
+                    }
                 }
+                adapter.listUser = userList
+                readData()
+
+                storage?.edit()?.putString("LIST_USER", Gson().toJson(userList))?.apply()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -101,11 +129,11 @@ class HomeFragment : Fragment() {
         })
     }
 
-    fun writeData() {
-        val usersRef = databaseRef.child("users")
-        val user = User("John", "Doe")
-        usersRef.child("1").setValue(user)
-    }
+//    fun writeData() {
+//        val usersRef = databaseRef.child("users")
+//        val user = User("John", "Doe")
+//        usersRef.child("1").setValue(user)
+//    }
 
     fun readData() {
         val postRef = database.getReference("posts")

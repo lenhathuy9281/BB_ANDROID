@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layoutHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/icBack"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="#3F3F3F" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal" />
+
+            <ImageView
+                android:id="@+id/icConfirmChange"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_round_check" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutAvatar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|top"
+                    android:layout_marginTop="20dp"
+                    android:elevation="6dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.07">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imageAvatarUser"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:background="@drawable/custom_circle_view_2"
+                        android:padding="10dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_avatar"
+
+                        app:civ_border_color="#CFCFCF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/icChooseAvatar"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignEnd="@+id/imageAvatarUser"
+                        android:background="@drawable/custom_bg_camera"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_outline_camera"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:tint="#444444" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/layoutChangeProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="90dp"
+                    android:layout_marginBottom="30dp"
+                    app:cardBackgroundColor="#52B0F8"
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="20dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="40dp"
+                            android:textColorHint="#6F6F6F"
+                            app:hintAnimationEnabled="true"
+
+                            app:hintTextColor="#6F6F6F">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edtNameUser"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="#C5D2DA"
+                                android:inputType="text"
+                                android:hint="@string/text_name_change_profile"
+                                android:paddingStart="10dp"
+                                android:textColor="@color/black"
+                                android:textSize="18dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:background="@drawable/custom_ed_phone_change_profile"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:id="@+id/tvTitlePhone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="#6F6F6F"
+                                android:textSize="15dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.054"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.1" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="top"
+                                android:orientation="horizontal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tvTitlePhone"
+                                app:layout_constraintVertical_bias="0.0">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:text="(+84)"
+                                    android:textColor="@color/black"
+                                    android:textSize="19dp" />
+
+                                <EditText
+                                    android:id="@+id/edtPhoneUser"
+                                    android:layout_width="0dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_weight="1"
+                                    android:inputType="phone"
+                                    android:lineHeight="2sp"
+                                    android:textColor="@color/black"
+                                    android:textSize="18dp" />
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColorHint="#6F6F6F"
+                            app:hintAnimationEnabled="true"
+                            app:hintTextColor="#6F6F6F">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edtEmailUser"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="false"
+                                android:hint="Email"
+                                android:backgroundTint="#C5D2DA"
+                                android:inputType="textEmailAddress"
+                                android:paddingStart="10dp"
+                                android:textColor="@color/black"
+                                android:textSize="18dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColorHint="#6F6F6F"
+                            app:hintAnimationEnabled="true"
+                            app:hintTextColor="#6F6F6F">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edtAddressUser"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="#C5D2DA"
+                                android:hint="Địa chỉ"
+                                android:inputType="text"
+                                android:paddingStart="10dp"
+                                android:textColor="@color/black"
+                                android:textSize="18dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="#C5D2DA">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilBirth"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColorHint="#6F6F6F"
+                                app:hintAnimationEnabled="true"
+                                app:hintTextColor="#6F6F6F">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtDobUser"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:focusable="false"
+                                    android:hint="ngày sinh"
+                                    android:backgroundTint="#C5D2DA"
+                                    android:inputType="date"
+                                    android:paddingStart="10dp"
+                                    android:textColor="@color/black"
+                                    android:textSize="18dp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <ImageView
+                                android:id="@+id/icChooseDate"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="10dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_calendar" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="25dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="5dp"
+                                android:text="Giới tính"
+                                android:textColor="#6F6F6F"
+                                android:textSize="19dp" />
+
+                            <RadioGroup
+                                android:id="@+id/rdoGroupSex"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="20dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/radioBtnMale"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="40dp"
+                                    android:buttonTint="#8C3F0A"
+                                    android:checked="true"
+                                    android:text="Nam"
+                                    android:textColor="@color/black"
+                                    android:textSize="16dp" />
+
+                                <RadioButton
+                                    android:id="@+id/radioBtnFemale"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="40dp"
+                                    android:layout_marginHorizontal="10dp"
+                                    android:buttonTint="#8C3F0A"
+                                    android:text="Nữ"
+                                    android:textColor="@color/black"
+                                    android:textSize="16dp" />
+
+                            </RadioGroup>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </FrameLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</layout>
